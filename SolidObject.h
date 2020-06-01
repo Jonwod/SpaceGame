@@ -88,7 +88,7 @@ protected:
     void updateStatus();
     
     //Units
-    //Are multiplied by relevent constructor arguments, so that if I decide to change the scale, I don't have to pass huge numbers to the constructor
+    //Are multiplied by relevant constructor arguments, so that if I decide to change the scale, I don't have to pass huge numbers to the constructor
     const static int massUnits = 1000;                //kg
     const static int momentOfInertiaUnits = 100000000;  //kgm^2
     const static int torqueUnits = 100000000;                   //Nm

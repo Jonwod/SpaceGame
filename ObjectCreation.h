@@ -14,20 +14,24 @@
 #include "OblistHandler.h"
 #include "BotPilot.h"
 #include "AsteroidField.h"
+#include <string>
+
+
+const std::string asset_path = "../Assets/";
 
 //arial font
 sf::Font arial;
-arial.loadFromFile("Assets/Arial.ttf");
+arial.loadFromFile(asset_path + "Arial.ttf");
 
 //FASE
 sf::Texture FASEsheet;
-if(!FASEsheet.loadFromFile("Assets/FASEsheet.png"))
+if(!FASEsheet.loadFromFile(asset_path + "FASEsheet.png"))
     std::cout<<"COULDNT FIND FASEsheet  PNG"<<std::endl;
 DestroyEffect FASE(3, 4, FASEsheet, 0.4);
 
 //Materials
 sf::SoundBuffer steelSoundBuffer;
-if(!steelSoundBuffer.loadFromFile("Assets/steelSound.ogg"))
+if(!steelSoundBuffer.loadFromFile(asset_path + "steelSound.ogg"))
     std::cout<<"Error loading steelSound.ogg"<<std::endl;
 sf::Sound steelSound;
 steelSound.setBuffer(steelSoundBuffer);
@@ -35,7 +39,7 @@ steelSound.setMinDistance(64);
 steelSound.setAttenuation(0.5);
 Material steel(steelSound);
 sf::SoundBuffer rockSoundBuffer;
-if(!rockSoundBuffer.loadFromFile("Assets/rockSound.ogg"))
+if(!rockSoundBuffer.loadFromFile(asset_path + "rockSound.ogg"))
 std::cout<<"Error loading rockSound.ogg"<<std::endl;
 sf::Sound rockSound;
 rockSound.setBuffer(rockSoundBuffer);
@@ -43,20 +47,20 @@ Material rock(rockSound);
 
 //Slug spark
 sf::Texture slugSparkSheet;
-if(!slugSparkSheet.loadFromFile("Assets/slugSparkSheet.png"))
+if(!slugSparkSheet.loadFromFile(asset_path + "slugSparkSheet.png"))
     std::cout<<"ERROR LOADING slugSparkSheet.png"<<std::endl;
 DestroyEffect slugSpark(3, 2,slugSparkSheet, 1.0/60.0);
 
 //railGun1 creation
 sf::Texture railGun1Texture;
-if (!railGun1Texture.loadFromFile("Assets/RailGun1.png"))
+if (!railGun1Texture.loadFromFile(asset_path + "RailGun1.png"))
 std::cout<<"ERROR!! Could not load file RailGun1.png"<<std::endl;
 railGun1Texture.setSmooth(true);
 sf::Sprite railGun1Sprite;
 railGun1Sprite.setTexture(railGun1Texture);
 sf::SoundBuffer bangBuffer;
-if(!bangBuffer.loadFromFile("Assets/Gunshot.ogg"))
-std::cout<<"Error loading Band.ogg"<<std::endl;
+if(!bangBuffer.loadFromFile(asset_path + "Gunshot.ogg"))
+std::cout<<"Error loading Gunshot.ogg"<<std::endl;
 sf::Sound bang;
 bang.setBuffer(bangBuffer);
 bang.setMinDistance(64);
@@ -67,7 +71,7 @@ std::vector<sf::Vector2f> railGun1LinePoints{q(0,4), q(11, 4), q(33,6), q(33,13)
 RailGun railGun1("RailGun1" ,5, 5, 0.9, sf::Vector2f(20, 10) , railGun1Sprite, FASE ,railGun1LinePoints, 34, 300, sf::Vector2f(33, 9), 5000, 400, bang, steel, 0.2);
 //slug1 creation
 sf::Texture slug1Texture;
-if (!slug1Texture.loadFromFile("Assets/slug1.png"))
+if (!slug1Texture.loadFromFile(asset_path + "slug1.png"))
 std::cout<<"ERROR!! Could not load file slug1.png"<<std::endl;
 slug1Texture.setSmooth(true);
 sf::Sprite slug1Sprite;
@@ -80,13 +84,13 @@ railGun1.setAmmo(slug1);
 
 //Ship1 creation
 sf::Texture Ship1Texture;
-if (!Ship1Texture.loadFromFile("Assets/Ship1.png"))
+if (!Ship1Texture.loadFromFile(asset_path + "Ship1.png"))
     std::cout<<"ERROR!! Could not load file Ship1.png"<<std::endl;
 Ship1Texture.setSmooth(true);
 sf::Sprite Ship1Sprite;
 Ship1Sprite.setTexture(Ship1Texture);
 sf::Texture Flamesheet1;
-if(!Flamesheet1.loadFromFile("Assets/Flamesheet1.png"))
+if(!Flamesheet1.loadFromFile(asset_path + "Flamesheet1.png"))
 std::cout<<"ERROR!!!! Unable to load file Flamesheet1.png";
 Flamesheet1.setSmooth(true);
 sf::Sprite FlameSprite1;
@@ -94,10 +98,10 @@ FlameSprite1.setTexture(Flamesheet1);
 sf::SoundBuffer FlameBuffer1;
 sf::SoundBuffer nosoundbuffer;
 sf::Sound nosound;
-if(!nosoundbuffer.loadFromFile("Assets/nosound.ogg"))
+if(!nosoundbuffer.loadFromFile(asset_path + "nosound.ogg"))
 std::cout<<"ERROR!!!!! Problem loading Flamesound1.ogg";
 sf::Sound FlameSound1;
-if(!FlameBuffer1.loadFromFile("Assets/Flamesound1.ogg"))
+if(!FlameBuffer1.loadFromFile(asset_path + "Flamesound1.ogg"))
 std::cout<<"ERROR!!!!! Problem loading Flamesound1.ogg";
 FlameSound1.setBuffer(FlameBuffer1);
 FlameSound1.setLoop(true);
@@ -120,12 +124,12 @@ Ship1.setPosition(mapSizeX/2+400, mapSizeY/2+100);
 
 //enemyShipDestroyEffect creation
 sf::Texture eShipDestroySheet;
-eShipDestroySheet.loadFromFile("Assets/enemyShipDestroyEffect.png");
+eShipDestroySheet.loadFromFile(asset_path + "enemyShipDestroyEffect.png");
 DestroyEffect enemyShipDestroyEffect(2, 2, eShipDestroySheet, 1.0/30.0);
 
 //enemyShip creation
 sf::Texture enemyShipTexture;
-enemyShipTexture.loadFromFile("Assets/EnemyShip1.png");
+enemyShipTexture.loadFromFile(asset_path + "EnemyShip1.png");
 enemyShipTexture.setSmooth(true);
 sf::Sprite enemyShipSprite;
 enemyShipSprite.setTexture(enemyShipTexture);
@@ -154,11 +158,11 @@ hostileBot.setTarget(Ship1);
 
 //rock Destroy effect creation
 sf::Texture rockDestroyEffectTexture;
-rockDestroyEffectTexture.loadFromFile("Assets/rockDestroyEffect.png");
+rockDestroyEffectTexture.loadFromFile(asset_path + "rockDestroyEffect.png");
 DestroyEffect rockDestroyEffect(2, 2, rockDestroyEffectTexture, 1.0/20.0);
 //Rock creation
 sf::Texture rockTexture;
-if(!rockTexture.loadFromFile("Assets/Asteroid.png"))
+if(!rockTexture.loadFromFile(asset_path + "Asteroid.png"))
 std::cout<<"PROBLEM!!! couldn't load Asteroid.png"<<std::endl;
 rockTexture.setSmooth(true);
 sf::Sprite rockSprite;
@@ -190,7 +194,7 @@ asteroid.setRotationalVelocity(50);
 //DangerBox creation
 sf::Texture DangerBoxTexture;
 if(!DangerBoxTexture.loadFromFile("Assets/DangerBox.png"))
-std::cout<<"COULDNT FIND DANGER BOX PNG";
+    std::cout<<"COULDNT FIND DANGER BOX PNG";
 DangerBoxTexture.setSmooth(true);
 sf::Sprite DangerBoxSprite;
 DangerBoxSprite.setTexture(DangerBoxTexture);

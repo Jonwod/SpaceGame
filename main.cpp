@@ -26,7 +26,7 @@ float offY=0;
 
 int main()
 {
-    
+    srand(time(NULL));
     sf::RenderWindow gamewindow(sf::VideoMode(screenSize.x, screenSize.y), "SFMLgame");
     gamewindow.setKeyRepeatEnabled(false);
     
@@ -35,7 +35,7 @@ int main()
     sf::Texture BackgroundTexture;
     BackgroundTexture.setRepeated(true);
     sf::Sprite BackgroundSprite;
-    if (!BackgroundTexture.loadFromFile("Assets/Spacebackground.png"))
+    if (!BackgroundTexture.loadFromFile("../Assets/Spacebackground.png"))
         std::cout<<"ERROR!!! Failed to load file Spacebackground.png";
     BackgroundSprite.setTexture(BackgroundTexture);
     BackgroundSprite.setColor(sf::Color(255, 255, 255, 255));

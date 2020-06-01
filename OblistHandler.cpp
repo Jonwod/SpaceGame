@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Jonathan Wood. All rights reserved.
 //
 
-#include "ObListHandler.h"
+#include "OblistHandler.h"
 
 void collisionHandler(){
     for(int i=0 ; i<SolidObject::ObList.size() ; i++){
